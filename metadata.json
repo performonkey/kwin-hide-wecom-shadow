@@ -1,0 +1,20 @@
+{
+	"KPlugin": {
+		"Name": "Hide WeCom Shadow",
+		"Description": "hide WeCom(企业微信) shadow frame",
+		"Icon": "preferences-system-windows",
+		"Authors": [
+			{
+				"Email": "p10y@reph.xyz",
+				"Name": "p10y"
+			}
+		],
+		"Id": "wxwork-shadow-close",
+		"Version": "1.0",
+		"License": "GPLv3",
+		"Website": "https://github.com/performonkey/kwin-hide-wecom-shadow"
+	},
+	"X-Plasma-API": "javascript",
+	"X-Plasma-MainScript": "code/main.js",
+	"KPackageStructure": "KWin/Script"
+}
