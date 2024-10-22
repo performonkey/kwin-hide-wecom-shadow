@@ -9,7 +9,7 @@
 				"Name": "p10y"
 			}
 		],
-		"Id": "wxwork-shadow-close",
+		"Id": "hide-wecom-shadow",
 		"Version": "1.0",
 		"License": "GPLv3",
 		"Website": "https://github.com/performonkey/kwin-hide-wecom-shadow"
