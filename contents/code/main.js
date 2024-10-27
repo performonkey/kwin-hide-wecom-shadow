@@ -23,7 +23,11 @@ function hideShadow(window) {
         const windowInfoJson = JSON.stringify(windowInfo);
 
         if (
-            (window.resourceClass === "wxwork.exe" && window.dialog && window.caption !== "menu" && window.caption !== "Open")
+            (window.resourceClass === "wxwork.exe"
+                && window.dialog
+                && window.caption !== "menu"
+                && window.caption !== "Open"
+                && window.caption !== "Select file/folder")
             || (window.resourceClass === "wemail.exe" && !window.caption)
         ) {
             log.debug(`[hide]${windowInfoJson}`);
