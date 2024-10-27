@@ -9,6 +9,8 @@ const log = {
     },
 };
 
+let mainWindow = null;
+
 function hideShadow(window) {
     if (!window) return;
 
@@ -21,6 +23,16 @@ function hideShadow(window) {
 
     try {
         const windowInfoJson = JSON.stringify(windowInfo);
+
+        if (window.resourceClass === "wxwork.exe" && !window.dialog && window.caption === "WeCom") {
+            mainWindow = window;
+        }
+
+        if (mainWindow && window.resourceClass !== "wxwork.exe" && window.resourceClass !== "wemail.exe") {
+            log.debug(`[minimize-wxwork]${windowInfoJson}`);
+            mainWindow.minimized = true;
+            return;
+        }
 
         if (
             (window.resourceClass === "wxwork.exe"
