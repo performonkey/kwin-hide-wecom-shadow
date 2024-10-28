@@ -1,4 +1,6 @@
-const config = { debug: readConfig("debug", false) };
+const config = {
+    debug: readConfig("debug", true),
+};
 
 const log = {
     debug(message) {
@@ -24,12 +26,22 @@ function hideShadow(window) {
     try {
         const windowInfoJson = JSON.stringify(windowInfo);
 
-        if (window.resourceClass === "wxwork.exe" && !window.dialog && window.caption === "WeCom") {
+        if (
+            window.resourceClass === "wxwork.exe"
+            && !window.dialog
+            && window.caption === "WeCom"
+        ) {
             mainWindow = window;
         }
 
-        if (mainWindow && window.resourceClass !== "wxwork.exe" && window.resourceClass !== "wemail.exe") {
-            log.debug(`[minimize-wxwork]${windowInfoJson}`);
+        if (
+            mainWindow
+            && window.resourceClass !== ""
+            && window.resourceClass !== "fcitx"
+            && window.resourceClass !== "wxwork.exe"
+            && window.resourceClass !== "wemail.exe"
+        ) {
+            log.debug(`[minimize-main-window]${windowInfoJson}`);
             mainWindow.minimized = true;
             return;
         }
@@ -39,7 +51,7 @@ function hideShadow(window) {
                 && window.dialog
                 && window.caption !== "menu"
                 && window.caption !== "Open"
-                && window.caption !== "Select file/folder")
+                && !window.caption.includes("Select"))
             || (window.resourceClass === "wemail.exe" && !window.caption)
         ) {
             log.debug(`[hide]${windowInfoJson}`);
